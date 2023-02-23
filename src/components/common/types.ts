@@ -9,4 +9,5 @@ export interface FormInput {
 
 export interface FormButton {
 	text: string;
+	handleNavi?: () => void;
 }
