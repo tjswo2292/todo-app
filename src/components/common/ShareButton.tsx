@@ -1,7 +1,7 @@
 import { FormButton } from "./types";
 
-const ShareButton = ({ text }: FormButton) => {
-	return <button>{text}</button>;
+const ShareButton = ({ text, handleNavi }: FormButton) => {
+	return <button onClick={handleNavi}>{text}</button>;
 };
 
 export default ShareButton;
