@@ -6,7 +6,6 @@ export interface FormInput {
 	placeholder: string;
 	handleOnChange: React.ChangeEventHandler<HTMLInputElement>;
 }
-
 export interface FormButton {
 	text: string;
 	handleNavi?: () => void;
