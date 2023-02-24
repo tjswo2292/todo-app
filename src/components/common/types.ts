@@ -8,5 +8,6 @@ export interface FormInput {
 }
 export interface FormButton {
 	text: string;
+	isDisabled?: boolean;
 	handleNavi?: () => void;
 }
