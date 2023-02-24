@@ -48,9 +48,10 @@ const SignIn = () => {
 		e.preventDefault();
 
 		try {
-			await signInApi(userInfo).then((res) =>
-				localStorage.setItem("access_token", res.data.access_token)
-			);
+			await signInApi(userInfo).then((res) => {
+				localStorage.setItem("access_token", res.data.access_token);
+				navigate("/todo");
+			});
 		} catch (err) {
 			console.log(err);
 		}
