@@ -1,12 +1,14 @@
-const EMAIL_CHECK = new RegExp(
-	"[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.][a-zA-Z]"
-);
+const EMAIL_CHECK = new RegExp("@");
 const PW_CHECK = new RegExp("(?=.{8,})");
 
-export const emailValidation = (email: string): boolean => {
+export const emailValidation = (email: string | undefined): boolean | void => {
+	if (email === undefined) return;
 	return EMAIL_CHECK.test(email);
 };
 
-export const passwordValidation = (password: string): boolean => {
+export const passwordValidation = (
+	password: string | undefined
+): boolean | void => {
+	if (password === undefined) return;
 	return PW_CHECK.test(password);
 };

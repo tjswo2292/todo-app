@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserInfoType } from "./types";
+import { UserInfoType, UserInfoValideType } from "./types";
 import ShareInput from "../common/ShareInput";
 import ShareTitle from "../common/ShareTitle";
 import ShareButton from "../common/ShareButton";
 import { signInApi } from "../../apis/auth/auth";
+import {
+	emailValidation,
+	passwordValidation,
+} from "../../utils/AuthValidation";
 
 const SignIn = () => {
 	const navigate = useNavigate();
@@ -12,6 +16,13 @@ const SignIn = () => {
 		email: undefined,
 		password: undefined,
 	});
+	const [isDisabled, setIsDisabled] = useState(true);
+
+	useEffect(() => {
+		emailValidation(userInfo.email) && passwordValidation(userInfo.password)
+			? setIsDisabled(false)
+			: setIsDisabled(true);
+	}, [userInfo]);
 
 	const handleLink = () => {
 		navigate("/signup");
@@ -59,7 +70,7 @@ const SignIn = () => {
 					placeholder="비밀번호를 입력해 주세요"
 					handleOnChange={handlePw}
 				/>
-				<ShareButton text="로그인" />
+				<ShareButton isDisabled={isDisabled} text="로그인" />
 			</form>
 			<ShareButton handleNavi={handleLink} text="회원가입" />
 		</div>
